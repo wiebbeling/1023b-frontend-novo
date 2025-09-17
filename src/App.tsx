@@ -18,7 +18,7 @@ function App() {
   }, [])
   return ( 
   <>
-  <div>JUAN</div>
+  <div>Mariane</div>
   {
     produtos.map((produto) => (
       <div key={produto.id}>
