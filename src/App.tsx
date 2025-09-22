@@ -42,6 +42,16 @@ function App() {
     .catch((error) => console.error('Erro ao cadastrar produto:', error))
 form .reset()
   }
+  function adicionaCarrinho(produtoId: string) {
+    const clienteId = "12345"
+    fetch('/api/carrinho', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ produtoId, clienteId })
+    })
+  }
   return ( 
   <>
   <div>Cadastro de Produtos</div>
@@ -60,6 +70,8 @@ form .reset()
         <p>{produto.descricao}</p>
         <p>R$ {produto.preco}</p>
         <img src={produto.urlfoto} alt={produto.nome} width="200" />
+        <p>{produto.descricao}</p>
+        <button onClick={() => adicionaCarrinho(produto.id)}>Adicionar ao Carrinho</button>
       </div>
     ))
   }
